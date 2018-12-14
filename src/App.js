@@ -1,8 +1,22 @@
-import React, { Component } from 'react';
+var React = require('react');
+var App = require('./components/App');
+var ReactDOM = require('react-dom');
+
+ReactDOM.render(<App />, document.getElementById('app'));
+
+/*import React, { Component } from 'react';
 import { Button } from "react-bulma-components/full";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import logo from './logo.svg';
 import './App.css';
+
+// Ahora, montamos los componentes en sus respectivos contenedores:
+var ReactDOM = require('react-dom');
+var Form=require('./components/Form');
+var Grid=require('./components/Grid');
+
+ReactDOM.render(<Form/>, document.getElementById('wrapper'));
+ReactDOM.render(<Grid/>, document.getElementById('wrapper'));
 
 const list = [
   {
@@ -123,7 +137,6 @@ class Book extends Component {
   render() {
     return (
       <div className="App">
-        <h2>ACME S.A.</h2>
         <div>
           <img src={this.props.imageUrl} />
         </div>
@@ -139,4 +152,4 @@ class Book extends Component {
   }
 }
 
-export default App;
+export default App;*/
