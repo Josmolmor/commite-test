@@ -34,7 +34,7 @@ var App = createReactClass({
         var count=books.length;
         for(var i=0;i<count;i++)
         {
-            if(books[i].title===book.title){
+            if(books[i].title.toUpperCase()===book.title.toUpperCase()){
                 alert('The book titled "' + book.title + '" is in the catalog already.')
                 return false;
             }
@@ -91,8 +91,8 @@ var App = createReactClass({
         var books = JSON.parse(localStorage.books);
         for (var i = 0; i < books.length; i++) {
             if(index == books[i].id){
-                books[i].votes = parseInt(books[i].votes) + 1;  //add one
-                break;  //exit loop since you found the person
+                books[i].votes = parseInt(books[i].votes) + 1;
+                break;
             }
         }
 
