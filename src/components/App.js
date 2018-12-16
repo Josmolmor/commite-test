@@ -65,13 +65,13 @@ var App = createReactClass({
         var index = e.target.getAttribute('data-key');
         var books = JSON.parse(localStorage.books);
         for (var i = 0; i < books.length; i++) {
-            if(index == books[i].id){  //look for match with id
-                if(books[i].votes <= 1){
+            if(index == books[i].id){
+                if(books[i].votes <= 0){
                     break;
                 }
                 else{
-                    books[i].votes = parseInt(books[i].votes) - 1;  //add two
-                    break;  //exit loop since you found the person
+                    books[i].votes = parseInt(books[i].votes) - 1;
+                    break;
                 }
             }
         }
@@ -90,8 +90,8 @@ var App = createReactClass({
         var index = e.target.getAttribute('data-key');
         var books = JSON.parse(localStorage.books);
         for (var i = 0; i < books.length; i++) {
-            if(index == books[i].id){  //look for match with id
-                books[i].votes = parseInt(books[i].votes) + 1;  //add two
+            if(index == books[i].id){
+                books[i].votes = parseInt(books[i].votes) + 1;  //add one
                 break;  //exit loop since you found the person
             }
         }
@@ -108,8 +108,15 @@ var App = createReactClass({
 
     delete(e){
         var index = e.target.getAttribute('data-key');
-        var books = JSON.parse(localStorage.getItem('books'));
-        books.splice(index, 1);
+        var books = JSON.parse(localStorage.books);
+        for (var i = 0; i < books.length; i++) {
+            if(index == books[i].id){
+                books.splice(i,1);
+            }
+        }
+
+        localStorage.setItem('books', JSON.stringify(books));
+
         // Actualizamos el state ordenado de forma descendiente
         this.setState({
             books: books.sort(function(a,b){
@@ -117,8 +124,6 @@ var App = createReactClass({
                 return b.votes - a.votes;
             })
         });
-
-        localStorage.setItem('books', JSON.stringify(books));
     },
 
     render: function() {
@@ -153,7 +158,7 @@ var App = createReactClass({
                                                 <input title="Press the button to add a vote from the book" class="button is-small is-info" type="button" value="+" onClick={this.add.bind(this)} data-key={book.id}/>
                                             </p>
                                             <p class="control">
-                                                <input title="Press the button to remove the book from the catalogue" class="button is-small is-danger" type="button" value="x" onClick={this.delete.bind(this)} data-key={index}/>
+                                                <input title="Press the button to remove the book from the catalogue" class="button is-small is-danger" type="button" value="x" onClick={this.delete.bind(this)} data-key={book.id}/>
                                             </p>
                                         </div>
                                     </div>
