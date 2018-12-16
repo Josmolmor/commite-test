@@ -135,10 +135,10 @@ var App = createReactClass({
                         }
                         else if(index <= 4){
                             var top = 'notification has-background-grey-lighter centered'
-                            var columnStyle = 'column auto'
+                            var columnStyle = 'column is-one-fifth'
                         }else{
                             top = 'notification has-background-grey-lighter centered'
-                            var columnStyle = 'column auto'
+                            var columnStyle = 'column is-one-fifth'
                         }
                         return(
                                 <div class={columnStyle}>
