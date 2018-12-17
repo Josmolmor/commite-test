@@ -33,13 +33,17 @@ var Form = createReactClass({
             var book = {
                 id: new Date().getTime(), // Generamos una id rápida
                 title: this.refs.titles.value,
-                votes: 0
+                votes: 0,
+                subBtn: 0,
+                addBtn: 1
             };
         }else{
             var book = {
                 id: new Date().getTime(), // Generamos una id rápida
                 title: this.refs.titles.value,
-                votes: this.refs.votes.value
+                votes: this.refs.votes.value,
+                subBtn: 0,
+                addBtn: 1
             }
         }
 
